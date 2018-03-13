@@ -27,6 +27,13 @@ class ViewController: UIViewController {
         page.currentPageIndicatorTintColor = UIColor.white
         page.addTarget(self, action: #selector(changeValue(page:)), for: .valueChanged)
         self.view.addSubview(page)
+        
+        let seg = UISegmentedControl(items: ["1","2","3","4"])
+        seg.frame = CGRect(x: 100, y: 200, width: 200, height: 30)
+        seg.insertSegment(withTitle: "5", at: 4, animated: false)
+        seg.removeSegment(at: 4, animated: false)
+        seg.setTitle("", forSegmentAt: 1)
+        self.view.addSubview(seg)
     }
     func switchDidChange(swi:UISwitch){
         if swi.isOn {
