@@ -34,6 +34,21 @@ class ViewController: UIViewController {
         seg.removeSegment(at: 4, animated: false)
         seg.setTitle("", forSegmentAt: 1)
         self.view.addSubview(seg)
+        
+        let slider = UISlider()
+        slider.frame = CGRect(x:100,y:300,width:100,height:30)
+        slider.minimumValue = 0
+        slider.maximumValue = 10
+        slider.minimumTrackTintColor = UIColor.gray
+        slider.maximumTrackTintColor = UIColor.white
+        slider.thumbTintColor = UIColor.green
+        slider.addTarget(self,action:#selector(ValueChanged(slider:)),for: .valueChanged)
+        self.view.addSubview(slider)
+        
+        let indicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        indicator.center = CGPoint(x: self.view.frame.size.width / 2, y: self.view.frame.size.height / 2)
+        self.view.addSubview(indicator)
+        indicator.startAnimating()
     }
     func switchDidChange(swi:UISwitch){
         if swi.isOn {
@@ -46,6 +61,9 @@ class ViewController: UIViewController {
     }
     func changeValue(page:UIPageControl){
         print(page.currentPage)
+    }
+    func ValueChanged(slider:UISlider){
+        print(slider.value)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
