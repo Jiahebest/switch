@@ -49,6 +49,14 @@ class ViewController: UIViewController {
         indicator.center = CGPoint(x: self.view.frame.size.width / 2, y: self.view.frame.size.height / 2)
         self.view.addSubview(indicator)
         indicator.startAnimating()
+        
+        
+        let progressView = UIProgressView(progressViewStyle: .default)
+        progressView.frame = CGRect(x: 100, y: 400, width: 100, height: 30)
+        progressView.progressTintColor = UIColor.blue
+        progressView.trackTintColor = UIColor.black
+        progressView.progress = 0.2
+        self.view.addSubview(progressView)
     }
     func switchDidChange(swi:UISwitch){
         if swi.isOn {
