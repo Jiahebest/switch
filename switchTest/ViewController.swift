@@ -14,7 +14,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.lightGray
         //创建控件实例并为属性赋值
-        let swi = UISwitch(frame: CGRect(x: 100, y: 100, width: 30, height: 30))
+        let swi = UISwitch(frame: CGRect(x: 50, y: 100, width: 30, height: 30))
         swi.onTintColor = UIColor.green
         swi.tintColor = UIColor.gray
         swi.thumbTintColor = UIColor.white
@@ -22,21 +22,21 @@ class ViewController: UIViewController {
         self.view.addSubview(swi)
         
         
-        let page = UIPageControl(frame: CGRect(x: 150, y: 150, width: 100, height: 30))
+        let page = UIPageControl(frame: CGRect(x: 150, y: 100, width: 100, height: 30))
         page.numberOfPages = 4
         page.currentPageIndicatorTintColor = UIColor.white
         page.addTarget(self, action: #selector(changeValue(page:)), for: .valueChanged)
         self.view.addSubview(page)
         
         let seg = UISegmentedControl(items: ["1","2","3","4"])
-        seg.frame = CGRect(x: 100, y: 200, width: 200, height: 30)
+        seg.frame = CGRect(x: 100, y: 150, width: 200, height: 30)
         seg.insertSegment(withTitle: "5", at: 4, animated: false)
         seg.removeSegment(at: 4, animated: false)
         seg.setTitle("", forSegmentAt: 1)
         self.view.addSubview(seg)
         
         let slider = UISlider()
-        slider.frame = CGRect(x:100,y:300,width:100,height:30)
+        slider.frame = CGRect(x:50,y:200,width:100,height:30)
         slider.minimumValue = 0
         slider.maximumValue = 10
         slider.minimumTrackTintColor = UIColor.gray
@@ -52,20 +52,21 @@ class ViewController: UIViewController {
         
         
         let progressView = UIProgressView(progressViewStyle: .default)
-        progressView.frame = CGRect(x: 100, y: 400, width: 100, height: 30)
+        progressView.frame = CGRect(x: 100, y: 2000, width: 100, height: 30)
         progressView.progressTintColor = UIColor.blue
         progressView.trackTintColor = UIColor.black
         progressView.progress = 0.2
         self.view.addSubview(progressView)
         
-        let step = UIStepper(frame: CGRect(x: 100, y: 500, width: 100, height: 20))
+        let step = UIStepper(frame: CGRect(x: 200, y: 200, width: 100, height: 20))
         step.maximumValue = 10
         step.minimumValue = 0
         step.autorepeat = true
         step.isContinuous = true
         step.stepValue = 1 //step long
-        step.addTarget(self, action: #selector(), for: .valueChanged)
-        
+        step.tintColor = UIColor.blue
+        step.addTarget(self, action: #selector(StepValueChange(step:)), for: .valueChanged)
+        self.view.addSubview(step)
     }
     func switchDidChange(swi:UISwitch){
         if swi.isOn {
