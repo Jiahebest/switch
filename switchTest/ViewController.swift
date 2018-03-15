@@ -57,6 +57,15 @@ class ViewController: UIViewController {
         progressView.trackTintColor = UIColor.black
         progressView.progress = 0.2
         self.view.addSubview(progressView)
+        
+        let step = UIStepper(frame: CGRect(x: 100, y: 500, width: 100, height: 20))
+        step.maximumValue = 10
+        step.minimumValue = 0
+        step.autorepeat = true
+        step.isContinuous = true
+        step.stepValue = 1 //step long
+        step.addTarget(self, action: #selector(), for: .valueChanged)
+        
     }
     func switchDidChange(swi:UISwitch){
         if swi.isOn {
@@ -72,6 +81,10 @@ class ViewController: UIViewController {
     }
     func ValueChanged(slider:UISlider){
         print(slider.value)
+    }
+    func StepValueChange(step:UIStepper)
+    {
+        print(step.value)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
